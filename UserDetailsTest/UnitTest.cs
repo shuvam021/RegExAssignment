@@ -83,5 +83,30 @@ namespace UserDetailsTest
             foreach (var item in invalidEmails)
                 Assert.IsFalse(_app.CheckStatus(item, pattern));
         }
+        [TestMethod]
+        public void TestUserPhone()
+        {
+            string pattern = _app._phonePattern;
+            string[] invalidPhone =
+            {
+                "0231",
+                "1234567890",
+                "91 12345678",
+                "9 1234567890",
+                "1 1234567890",
+                "1 123456abcd",
+                "91 123456abcd",
+            };
+            string[] validPhone =
+            {
+                "911234567890",
+                "91 1234567890",
+            };
+            foreach (var item in invalidPhone)
+                Assert.IsFalse(_app.CheckStatus(item, pattern));
+            
+            foreach (var item in validPhone)
+                Assert.IsTrue(_app.CheckStatus(item, pattern));
+        }
     }
 }

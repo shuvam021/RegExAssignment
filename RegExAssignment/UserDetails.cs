@@ -8,8 +8,10 @@ namespace RegExAssignment
     /// </summary>
     public class UserDetails
     {
+        private string _msg = "Error: value {0} doesn't match with pattern";
         public string _namePattern = "^[A-Z]{1}[a-z]{2,}$";
         public string _emailPattern = "^(abc+[a-z._+-]*)+@bl.co.[a-z]{2,}$";
+        public string _phonePattern = "^91+( )?[0-9]{10}$";
         
         /// <summary>Validate user inputs</summary>
         /// <param name="input">Raw Value</param>
@@ -19,58 +21,76 @@ namespace RegExAssignment
         {
             return Regex.IsMatch(input, pattern);
         }
-
-        public void tempInput()
+        public void Result(params string[] data)
         {
-            string firstName = "Shuvam";
-            string lastName = "Das";
-            string email = "abc+shuvam@bl.co.com";
-            
-            if(!CheckStatus(firstName, _namePattern))
-                throw new Exception($"{firstName} pattern matching failed");
-            
-            if(!CheckStatus(lastName, _namePattern))
-                throw new Exception($"{lastName} pattern matching failed");
-            
-            if(!CheckStatus(email, _emailPattern))
-                throw new Exception($"{email} pattern matching failed");
             Console.WriteLine("---------------------------------");
             Console.WriteLine("Results");
             Console.WriteLine("---------------------------------");
-            Console.WriteLine("FirstName: " + firstName);
-            Console.WriteLine("LastName: " + lastName);
-            Console.WriteLine("Email: " + email);
+            Console.WriteLine("FirstName: " + data[0]);
+            Console.WriteLine("LastName: " + data[1]);
+            Console.WriteLine("Email: " + data[2]);
+            Console.WriteLine("Phone: " + data[3]);
         }
-        
+
+        public bool Validate(params string[] rawData)
+        {
+            bool flag = true;
+
+            if (!CheckStatus(rawData[0], _namePattern))
+            {
+                Console.WriteLine(_msg, rawData[0]);
+                flag = false;
+            }
+
+            if (!CheckStatus(rawData[1], _namePattern))
+            {
+                Console.WriteLine(_msg, rawData[1]);
+                flag = false;
+            }
+
+            if (!CheckStatus(rawData[2], _emailPattern))
+            {
+                Console.WriteLine(_msg, rawData[2]);
+                flag = false;
+            }
+
+            if (!CheckStatus(rawData[3], _phonePattern))
+            {
+                Console.WriteLine(_msg, rawData[3]);
+                flag = false;
+            }
+            return flag;
+        }
+
         public void Solution()
         {
             /*
-             // uc-1 User's First Name validation
+            // uc-1 User's First Name validation
             Console.Write("First Name = ");
             string firstName = Console.ReadLine();
-            
-            if(!CheckStatus(firstName, _namePattern))
-                throw new Exception($"{firstName} pattern matching failed");
             
             // uc-2 User's Last Name validation
             Console.Write("Last Name = ");
             string lastName = Console.ReadLine();
-            if(!CheckStatus(lastName, _namePattern))
-                throw new Exception($"{lastName} pattern matching failed");
-            
+
             // uc-3 User's Email validation
             Console.Write("Email = ");
             string email = Console.ReadLine();
-            if(!CheckStatus(email, _emailPattern))
-                throw new Exception($"{email} pattern matching failed");
-            Console.WriteLine("---------------------------------");
-            Console.WriteLine("Results");
-            Console.WriteLine("---------------------------------");
-            Console.WriteLine("FirstName: " + firstName);
-            Console.WriteLine("LastName: " + lastName);
-            Console.WriteLine("Email: " + email);
+
+            // uc-4 User's Email validation
+            Console.Write("Email = ");
+            string phone = Console.ReadLine();
             */
-            tempInput();
-        } 
+            
+            string firstName = "John";
+            string lastName = "Doe";
+            string email = "abc+john-doe.bridge_labz@bl.co.com";
+            string phone = "91 7894561230";
+            
+            if (Validate(firstName, lastName, email, phone))
+            {
+                Result(firstName, lastName, email, phone);
+            }
+        }
     }
 }
