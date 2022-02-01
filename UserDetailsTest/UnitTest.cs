@@ -35,8 +35,6 @@ namespace UserDetailsTest
         {
             string pattern = _app._namePattern;
             // invalid values 
-            string[] testCasesUserLastName = { "", "", "", "", "", "" };
-            // CheckStatus(testCasesUserLastName, userDetailsNamePattern);
             Assert.IsFalse(_app.CheckStatus("do", pattern));
             Assert.IsFalse(_app.CheckStatus("Do", pattern));
             Assert.IsFalse(_app.CheckStatus("1Do", pattern));
@@ -44,6 +42,46 @@ namespace UserDetailsTest
             // // valid values 
             Assert.IsTrue(_app.CheckStatus("Doey", pattern));
             Assert.IsTrue(_app.CheckStatus("Doe", pattern));
+        }
+        
+        [TestMethod]
+        public void TestUserEmail()
+        {
+            string pattern = _app._emailPattern;
+            string[] invalidEmails =
+            {
+                "abc",
+                "abc@bl.co.",
+                "abc123$bl.cocom",
+                "abc123@bl.co.com",
+                "abc123@.bl.co.in",
+                ".abc@abc.bl.co.in",
+                "abc()*@bl.co.in",
+                "abc@%*.bl.co.in",
+                "abc123@.com",
+                "abc123@.com.com",
+                ".abc@abc.com",
+                "abc()*@gmail.com",
+                "abc@%*.com",
+                "abc123$bl.co.com",
+            };
+            string[] validEmails =
+            {
+                "abczxss@bl.co.in",
+                "abc@bl.co.in",
+                "abc@bl.co.com",
+                "abc+xyz@bl.co.com",
+                "abc.xyz@bl.co.com",
+                "abc_xyz@bl.co.com",
+                "abc-xyz@bl.co.com",
+                "abc-xyz.mkl@bl.co.com",
+                "abc-xyz.mk_xyz@bl.co.com",
+                "abc-xyz.mk_xyz+hh@bl.co.com",
+            };
+            foreach (var item in validEmails)
+                Assert.IsTrue(_app.CheckStatus(item, pattern));
+            foreach (var item in invalidEmails)
+                Assert.IsFalse(_app.CheckStatus(item, pattern));
         }
     }
 }
