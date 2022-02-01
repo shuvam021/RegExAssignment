@@ -108,5 +108,26 @@ namespace UserDetailsTest
             foreach (var item in validPhone)
                 Assert.IsTrue(_app.CheckStatus(item, pattern));
         }
+        [TestMethod]
+        public void TestUserPassword()
+        {
+            string pattern = _app._passwordPattern;
+            string[] invalidPassword =
+            {
+                "passwd",
+            };
+            string[] validPassword =
+            {
+                "Password",
+                "password",
+                "Password123",
+                "Passwd123",
+            };
+             foreach (var item in invalidPassword)
+                Assert.IsFalse(_app.CheckStatus(item, pattern));
+            
+            foreach (var item in validPassword)
+                Assert.IsTrue(_app.CheckStatus(item, pattern));
+        }
     }
 }

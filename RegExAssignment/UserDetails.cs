@@ -8,10 +8,11 @@ namespace RegExAssignment
     /// </summary>
     public class UserDetails
     {
-        private string _msg = "Error: value {0} doesn't match with pattern";
+        private string _msg = "Error: value '{0}' doesn't match with pattern";
         public string _namePattern = "^[A-Z]{1}[a-z]{2,}$";
         public string _emailPattern = "^(abc+[a-z._+-]*)+@bl.co.[a-z]{2,}$";
         public string _phonePattern = "^91+( )?[0-9]{10}$";
+        public string _passwordPattern = "^[a-zA-Z0-9]{8,}$";
         
         /// <summary>Validate user inputs</summary>
         /// <param name="input">Raw Value</param>
@@ -30,6 +31,7 @@ namespace RegExAssignment
             Console.WriteLine("LastName: " + data[1]);
             Console.WriteLine("Email: " + data[2]);
             Console.WriteLine("Phone: " + data[3]);
+            Console.WriteLine("Password: " + data[4].Replace(data[4], "********"));
         }
 
         public bool Validate(params string[] rawData)
@@ -59,6 +61,11 @@ namespace RegExAssignment
                 Console.WriteLine(_msg, rawData[3]);
                 flag = false;
             }
+            if (!CheckStatus(rawData[4], _passwordPattern))
+            {
+                Console.WriteLine(_msg, rawData[4]);
+                flag = false;
+            }
             return flag;
         }
 
@@ -80,16 +87,21 @@ namespace RegExAssignment
             // uc-4 User's Email validation
             Console.Write("Email = ");
             string phone = Console.ReadLine();
+            
+            // uc-5 User's password validation
+            Console.Write("Email = ");
+            string phone = Console.ReadLine();
             */
             
             string firstName = "John";
             string lastName = "Doe";
             string email = "abc+john-doe.bridge_labz@bl.co.com";
             string phone = "91 7894561230";
+            string password = "hello123";
             
-            if (Validate(firstName, lastName, email, phone))
+            if (Validate(firstName, lastName, email, phone, password))
             {
-                Result(firstName, lastName, email, phone);
+                Result(firstName, lastName, email, phone, password);
             }
         }
     }
