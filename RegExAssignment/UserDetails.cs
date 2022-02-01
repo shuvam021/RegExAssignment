@@ -21,13 +21,24 @@ namespace RegExAssignment
         public void Solution()
         {
             // uc-1 User's First Name validation
+            Console.Write("First Name: ");
             string firstName = Console.ReadLine();
             
             if(!CheckStatus(firstName, _namePattern))
-                throw new Exception("Pattern Matching failed");
+                throw new Exception($"{firstName} pattern matching failed");
             
-            // Result
+            // uc-2 User's Last Name validation
+            Console.Write("Last Name: ");
+            string lastName = Console.ReadLine();
+            
+            if(!CheckStatus(lastName, _namePattern))
+                throw new Exception($"{lastName} pattern matching failed");
+            
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("Results");
+            Console.WriteLine("---------------------------------");
             Console.WriteLine("FirstName: " + firstName);
+            Console.WriteLine("LastName: " + lastName);
         } 
     }
 }
