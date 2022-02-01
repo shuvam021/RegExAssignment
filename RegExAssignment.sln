@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegExAssignment", "RegExAssignment\RegExAssignment.csproj", "{7F388BE7-5084-4F20-B6DF-B2DDB48854EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserDetailsTest", "UserDetailsTest\UserDetailsTest.csproj", "{EA803689-902B-4621-96C3-CF348A04F9A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{7F388BE7-5084-4F20-B6DF-B2DDB48854EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F388BE7-5084-4F20-B6DF-B2DDB48854EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F388BE7-5084-4F20-B6DF-B2DDB48854EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA803689-902B-4621-96C3-CF348A04F9A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA803689-902B-4621-96C3-CF348A04F9A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA803689-902B-4621-96C3-CF348A04F9A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA803689-902B-4621-96C3-CF348A04F9A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

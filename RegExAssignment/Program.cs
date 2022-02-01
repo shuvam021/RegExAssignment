@@ -6,7 +6,8 @@ namespace RegExAssignment
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("RegEx Assignments");
+            var app = new UserDetails();
+            app.Solution();
         }
     }
 }
