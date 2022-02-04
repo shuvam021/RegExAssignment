@@ -12,7 +12,8 @@ namespace RegExAssignment
         public string _namePattern = "^[A-Z]{1}[a-z]{2,}$";
         public string _emailPattern = "^(abc+[a-z._+-]*)+@bl.co.[a-z]{2,}$";
         public string _phonePattern = "^91+( )?[0-9]{10}$";
-        public string _passwordPattern = "^@([A-Z]{1,})+[a-zA-Z0-9]{8,}$";
+        // public string _passwordPattern = "^@([A-Z]{1,})+@([0-9]{1,})+[a-zA-Z0-9]{8,}$";
+        public string _passwordPattern = "(?=.*?[0-9])(?=.*?[a-z])(?=.*?[A-Z])";
         
         /// <summary>Validate user inputs</summary>
         /// <param name="input">Raw Value</param>

@@ -117,19 +117,20 @@ namespace UserDetailsTest
                 "passwd",
                 "password",
                 "pass1234",
+                "12345678",
+                "passWord",
+                "Password",
             };
             string[] validPassword =
             {
-                "Password",
-                "passWord",
-                "Password123",
+                "Password121",
                 "Passwd123",
             };
              foreach (var item in invalidPassword)
                 Assert.IsFalse(_app.CheckStatus(item, pattern));
             
-            // foreach (var item in validPassword)
-            //     Assert.IsTrue(_app.CheckStatus(item, pattern));
+            foreach (var item in validPassword)
+                Assert.IsTrue(_app.CheckStatus(item, pattern));
         }
     }
 }
